@@ -11,7 +11,7 @@ def changepasswd(url,passwd):
     driver.find_element_by_id('proceed-link').click()
     time.sleep(3)
     driver.find_element_by_id('iduserName').send_keys('admin')
-    driver.find_element_by_xpath("//*[@id='wrap']/div[2]/div/div[2]/form/div/div[2]/div[2]/input").send_keys('Y08iqP7hniLkcGll')
+    driver.find_element_by_xpath("//*[@id='wrap']/div[2]/div/div[2]/form/div/div[2]/div[2]/input").send_keys('oldpasswd')
     driver.find_element_by_xpath("//*[@id='wrap']/div[2]/div/div[2]/form/div/div[2]/div[3]/button").click()
     time.sleep(10)
     #a = driver.switch_to.alert
@@ -24,7 +24,7 @@ def changepasswd(url,passwd):
     driver.find_element_by_xpath("//*[@id='rightDiv']/div[1]/div/table[4]/tbody/tr[1]/td[2]/div").click()
     time.sleep(3)
     driver.find_element_by_xpath("//*[@id='idBoxSigGroup']/div[2]/table/tbody/tr[2]/td[2]").click()
-    driver.find_element_by_id('idOldPassword').send_keys('Y08iqP7hniLkcGll')
+    driver.find_element_by_id('idOldPassword').send_keys('oldpasswd')
     driver.find_element_by_id('idPassword').send_keys(passwd)
     driver.find_element_by_id('idPasswordCfm').send_keys(passwd)
     driver.find_element_by_xpath("//*[@id='idBoxSigGroup']/div[3]/button").click()
@@ -43,7 +43,7 @@ def changepasswd2(url,passwd):
     driver.find_element_by_xpath("//*[@id='usrName']").click()
     driver.find_element_by_xpath("//*[@id='usrName']").send_keys('ADMIN')
     driver.find_element_by_xpath("//*[@id='pwd']").click()
-    driver.find_element_by_xpath("//*[@id='pwd']").send_keys('Y08iqP7hniLkcGll')
+    driver.find_element_by_xpath("//*[@id='pwd']").send_keys('oldpasswd')
     driver.find_element_by_id('login_word').click()
     time.sleep(3)
     driver.find_element_by_xpath('//*[@id="_submenu"]/li[3]/a/span').click()
@@ -66,7 +66,7 @@ def main(file):
     while (i <= 33):
         # 第G列，邮箱账号
         url = sheet.cell(row=i, column=1).value
-        passwd = 'Tianshu@123'
+        passwd = 'newpasswd'
         if sheet.cell(row=i, column=3).value != '已修改':
             try:
                 changepasswd2(url, passwd)
