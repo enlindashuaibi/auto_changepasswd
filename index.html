@@ -1,0 +1,61 @@
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <g-guard>
+        <!-- <g-element backgroundImage="url('http://www.pptbz.com/uploadimg//pptpic/201412/2014121012560474.jpg')" width="100%" height="100%" flex="1"></g-element> -->
+
+        <g-router>
+            <g-guard-container path="/">
+                <g-app-logo marginTop="24px" marginBottom="24px"></g-app-logo>
+                <g-app-name marginBottom="20px"></g-app-name>
+                <g-account-input marginBottom="20px" text=""></g-account-input>
+                <g-password-input marginBottom="20px" text=""></g-password-input>
+                <g-login-button marginBottom="20px"></g-login-button>
+                <g-button type="link" marginBottom="20px" to="/register">立即注册</g-button>
+            </g-guard-container>
+
+            <g-guard-container path="/register">
+                <g-app-logo marginTop="24px" marginBottom="24px"></g-app-logo>
+                <g-app-name marginBottom="20px"></g-app-name>
+                <g-account-input marginBottom="20px" text=""></g-account-input>
+                <g-password-input marginBottom="20px" text=""></g-password-input>
+                <g-password-confirm-input marginBottom="20px" text=""></g-password-confirm-input>
+                <g-register-button marginBottom="20px"></g-register-button>
+                <g-button type="back" marginBottom="20px">返回登录</g-button>
+            </g-guard-container>
+        </g-router>
+    </g-guard>
+
+    <script type="module">
+        import { Guard } from '../packages/guardui/src/guardui.js'
+        // import { Guard } from 'https://unpkg.com/guard-ui/dist/index.mjs'
+
+        const guard = await Guard.initialize({appId: "62ac18c93134e5fafcd29435"});
+        guard.on('login', (code, message, userInfo) => {
+            if (code === 200) {
+                console.log(userInfo);
+                guard.message.success('Welcome! ' + userInfo.nickname);
+            } else {
+                guard.message.error(message);
+            }
+        });
+        guard.on('register', (code, message, userInfo) => {
+            if (code === 200) {
+                console.log(userInfo);
+                guard.message.success('Welcome! ' + userInfo.nickname);
+            } else {
+                guard.message.error(message);
+            }
+        });
+        // guard.setAccentColor('#F00');
+
+    </script>
+
+</body>
+</html>
